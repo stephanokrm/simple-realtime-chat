@@ -1,0 +1,35 @@
+<md-content id="chat">
+    <div class="center">
+        <div layout="row" flex class="content">
+            <md-sidenav class="md-sidenav-left" md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" md-whiteframe="4" ng-include="'Chat/app/views/sidenav.html'" layout="column"></md-sidenav>
+            <div flex layout="column">
+                <md-toolbar class="md-primary">
+                    <div class="md-toolbar-tools">
+                        <h2 class="md-flex">Geral - {{ user.session }}</h2>
+                    </div>
+                </md-toolbar>
+                <md-content flex layout-padding>
+                    <div layout="row" class="md-padding contact message-row" ng-class="message.class" ng-repeat="message in messages track by $index">
+                        <div class="bubble">
+                            <div class="message">{{message.text}}</div>
+                            <div class="time secondary-text">{{message.user.name}} - {{message.date}}</div>
+                        </div>
+                    </div>
+                </md-content>
+                <md-toolbar class="md-footer md-primary" layout-padding>
+                    <form ng-submit="store()">
+                        <div layout="row">
+                            <md-input-container flex="95">
+                                <textarea ng-model="chat.newMessage"></textarea>
+                            </md-input-container>
+                            <span flex></span>
+                            <md-button class="md-fab" aria-label="Send" type="submit">
+                                <md-icon class="material-icons">send</md-icon>
+                            </md-button>
+                        </div>
+                    </form>
+                </md-toolbar>
+            </div>
+        </div>
+    </div>
+</md-content>
